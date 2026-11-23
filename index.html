@@ -3,218 +3,115 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#100d18">
-  <title>Cookie Jar — a little treat</title>
+  <meta name="theme-color" content="#09070d">
+  <title>THE COOKIE</title>
   <style>
-    :root {
-      color-scheme: dark;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #100d18;
-      color: #fff8ed;
-      font-synthesis: none;
-    }
+    :root { color-scheme: dark; }
     * { box-sizing: border-box; }
-    body {
-      min-height: 100vh;
-      margin: 0;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      background: radial-gradient(ellipse at 50% 42%, #30203b 0, #17111f 42%, #0c0a12 100%);
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: .14;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
-    }
-    .card {
-      position: relative;
-      z-index: 1;
-      width: min(440px, calc(100vw - 32px));
-      padding: 38px 34px 32px;
-      text-align: center;
-      border: 1px solid #ffffff20;
-      border-radius: 24px;
-      background: linear-gradient(145deg, #261d30ee, #17131dee);
-      box-shadow: 0 24px 90px #0008, inset 0 1px #ffffff12;
-    }
-    .cookie { font-size: 58px; filter: drop-shadow(0 8px 18px #f0a55735); }
-    .eyebrow { margin: 12px 0 8px; color: #f3b568; font-size: 11px; font-weight: 800; letter-spacing: .22em; text-transform: uppercase; }
-    h1 { margin: 0; font-family: Georgia, serif; font-size: clamp(32px, 8vw, 42px); font-weight: 500; letter-spacing: -.04em; }
-    .copy { max-width: 330px; margin: 14px auto 26px; color: #c9bdcc; font-size: 15px; line-height: 1.65; }
-    button { font: inherit; cursor: pointer; }
-    .accept {
-      width: 100%; min-height: 54px; border: 0; border-radius: 13px;
-      background: linear-gradient(110deg, #f3b568, #f48566); color: #241523;
-      font-weight: 800; box-shadow: 0 8px 26px #f18c5a35; transition: transform .18s, filter .18s;
-    }
-    .accept:hover { transform: translateY(-2px); filter: brightness(1.08); }
-    .accept:focus-visible, .small-button:focus-visible { outline: 3px solid white; outline-offset: 3px; }
-    .fine-print { margin: 15px 0 0; color: #938697; font-size: 11px; }
-    .stage {
-      position: fixed; z-index: 5; inset: 0; display: grid; place-items: center;
-      overflow: hidden; background: #110b14; opacity: 0; visibility: hidden;
-      transition: opacity .12s, visibility .12s;
-    }
-    .stage.show { opacity: 1; visibility: visible; }
-    .stage.show .monster { animation: lunge .42s cubic-bezier(.15,.85,.25,1) both; }
-    .monster { width: min(94vmin, 760px); aspect-ratio: 1; filter: drop-shadow(0 0 54px #e44548a0); }
-    .monster .cookie-face { fill: #b67138; stroke: #f5bd6c; stroke-width: 12; }
-    .monster .chip { fill: #402319; }
-    .monster .eye { fill: #fff2d6; }
-    .monster .pupil { fill: #220e13; }
-    .monster .mouth { fill: #250b16; stroke: #f8d5ae; stroke-width: 9; }
-    .monster .tooth { fill: #fff5df; }
-    .scare-title { position: absolute; top: 8%; left: 0; width: 100%; color: #fff2e4; text-align: center; font: 900 clamp(28px, 8vw, 76px)/1 Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; letter-spacing: .05em; text-shadow: 0 5px #8e1f37, 0 0 28px #ff5b50; }
-    .controls { position: absolute; bottom: max(22px, env(safe-area-inset-bottom)); display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
-    .small-button { min-height: 44px; padding: 0 17px; color: white; border: 1px solid #ffffff55; border-radius: 99px; background: #17111dcc; font-weight: 650; }
-    .small-button:hover { background: #362236; }
-    .hint { position: absolute; bottom: max(80px, calc(env(safe-area-inset-bottom) + 60px)); color: #e6d9e8; font-size: 13px; }
-    @keyframes lunge {
-      0% { transform: scale(.08) rotate(-13deg); }
-      65% { transform: scale(1.12) rotate(3deg); }
-      100% { transform: scale(1) rotate(0); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-    }
+    body { min-height: 100vh; margin: 0; overflow: hidden; font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; background: #08070a; color: #eee8e1; }
+    .intro { position: fixed; inset: 0; display: grid; place-items: center; background: radial-gradient(circle at 50% 45%, #24202a, #09080d 70%); }
+    .intro::after { content:""; position:absolute; inset:-50%; opacity:.12; background: repeating-radial-gradient(circle, #fff 0 1px, transparent 1px 5px); animation: static 0.12s steps(2) infinite; }
+    .panel { position:relative; z-index:2; width:min(520px, calc(100vw - 32px)); padding:42px 36px; text-align:center; border:1px solid #ffffff18; border-radius:4px; background:#111016d9; box-shadow:0 35px 100px #000b; }
+    h1 { margin:0 0 12px; font-size:clamp(40px, 11vw, 76px); line-height:.82; letter-spacing:.02em; text-transform:uppercase; }
+    .red { color:#b11c24; text-shadow:0 0 22px #e51b24aa; }
+    p { margin:18px auto 28px; max-width:390px; font-family:Georgia, serif; font-size:16px; line-height:1.6; color:#aca5a9; }
+    .button { position:relative; width:100%; height:68px; border:1px solid #caaea0; border-radius:2px; cursor:pointer; background:#e7ddd2; color:#120e12; font:900 20px Georgia, serif; letter-spacing:.04em; box-shadow:0 10px 0 #6d6060, 0 24px 50px #0008; transition:.12s; }
+    .button:hover { background:#fff8ef; transform:translateY(-2px); box-shadow:0 12px 0 #6d6060, 0 28px 60px #000a; }
+    .button:active { transform:translateY(8px); box-shadow:0 2px 0 #6d6060; }
+
+    .jumpscare { position:fixed; z-index:10; inset:0; display:none; place-items:center; overflow:hidden; background:#020103; }
+    .jumpscare.active { display:grid; }
+    .jumpscare::before { content:""; position:absolute; z-index:5; inset:-30%; pointer-events:none; opacity:.22; background:repeating-linear-gradient(0deg, transparent 0 3px, #fff 4px 5px); animation:flicker .08s steps(2) infinite; }
+    .jumpscare::after { content:""; position:absolute; z-index:6; inset:0; pointer-events:none; box-shadow:inset 0 0 110px 42px #000, inset 0 0 260px 100px #200006; }
+
+    .creature { position:absolute; width:min(96vw, 900px); height:min(96vh, 900px); transform:scale(.08) rotate(-8deg); filter:contrast(1.25) drop-shadow(0 0 34px #970006); }
+    .active .creature { animation:attack .48s cubic-bezier(.1,.7,.1,1) forwards, shake .07s .48s infinite; }
+    .skin { fill:#3b080c; stroke:#100205; stroke-width:22; }
+    .skin-light { fill:#8f1719; }
+    .crack { fill:none; stroke:#160104; stroke-width:13; stroke-linecap:round; }
+    .eye { fill:#f1dfbb; stroke:#1b0205; stroke-width:16; }
+    .pupil { fill:#09090a; }
+    .mouth { fill:#090206; stroke:#160204; stroke-width:18; }
+    .tooth { fill:#e7dcc7; stroke:#24130f; stroke-width:5; }
+    .tongue { fill:#a41320; }
+
+    .scream { position:absolute; z-index:8; top:3%; width:100%; margin:0; text-align:center; color:#fff; font-size:clamp(44px, 13vw, 150px); line-height:.8; letter-spacing:-.04em; text-transform:uppercase; text-shadow:7px 7px #79000a, -4px -4px #b42d32, 0 0 38px #e1161e; animation:word .11s steps(2) infinite alternate; }
+    .controls { position:absolute; z-index:20; bottom:24px; display:flex; gap:10px; }
+    .control { min-height:48px; padding:0 18px; border:1px solid #ffffff75; border-radius:999px; cursor:pointer; background:#08070ad9; color:#fff; font:700 15px Georgia, serif; backdrop-filter:blur(8px); }
+    .control:hover { background:#501018; }
+
+    @keyframes attack { 0%{transform:scale(.08) rotate(-8deg)} 55%{transform:scale(1.22) rotate(4deg)} 75%{transform:scale(.86) rotate(-3deg)} 100%{transform:scale(1.04) rotate(0)} }
+    @keyframes shake { 0%,100%{margin:0} 25%{margin:-6px 0 0 8px} 50%{margin:5px -8px 0 0} 75%{margin:-3px 0 0 -7px} }
+    @keyframes flicker { 0%{transform:translateY(-3%) scaleY(1)} 100%{transform:translateY(3%) scaleY(.96)} }
+    @keyframes word { from{transform:skewX(-4deg) scaleX(.94)} to{transform:skewX(5deg) scaleX(1.06)} }
+    @keyframes static { 0%{transform:translate(2%,2%)} 25%{transform:translate(-2%,3%)} 50%{transform:translate(3%,-2%)} 75%{transform:translate(-3%,-3%)} }
+    @media (max-width:600px) { .panel{padding:34px 20px}.controls{bottom:14px}.control{padding:0 12px;font-size:13px}.creature{width:112vw;height:112vw} }
+    @media (prefers-reduced-motion: reduce) { .intro::after,.jumpscare::before,.active .creature,.scream{animation-duration:.01ms!important;animation-iteration-count:1!important} }
   </style>
 </head>
 <body>
-  <main class="card" aria-labelledby="title">
-    <div class="cookie" aria-hidden="true">🍪</div>
-    <p class="eyebrow">A very normal cookie notice</p>
-    <h1 id="title">Cookies, anyone?</h1>
-    <p class="copy">We use cookies to make this little corner of the internet sweeter. Go on, accept a treat.</p>
-    <button class="accept" id="accept" type="button">Accept all cookies</button>
-    <p class="fine-print">Baked fresh-ish. Best enjoyed with the sound on.</p>
+  <main class="intro" id="intro">
+    <section class="panel">
+      <h1>THE<br><span class="red">COOKIE</span></h1>
+      <p>It has been waiting beneath the crumbs. It remembers every cookie you ever ate.</p>
+      <button class="button" id="accept">TAKE ONE</button>
+    </section>
   </main>
 
-  <section class="stage" id="stage" role="dialog" aria-modal="true" aria-label="Cookie monster surprise" aria-hidden="true">
-    <p class="scare-title">YOU'VE BEEN COOKIE'D!</p>
-    <svg class="monster" viewBox="0 0 500 500" role="img" aria-label="A startled cookie monster with a huge grin">
-      <circle class="cookie-face" cx="250" cy="250" r="220" />
-      <g class="chip">
-        <ellipse cx="105" cy="177" rx="17" ry="12" transform="rotate(-35 105 177)" />
-        <ellipse cx="394" cy="138" rx="20" ry="13" transform="rotate(24 394 138)" />
-        <ellipse cx="80" cy="302" rx="18" ry="12" transform="rotate(14 80 302)" />
-        <ellipse cx="419" cy="307" rx="17" ry="11" transform="rotate(-30 419 307)" />
-        <ellipse cx="153" cy="410" rx="20" ry="12" transform="rotate(-20 153 410)" />
-        <ellipse cx="341" cy="408" rx="18" ry="12" transform="rotate(32 341 408)" />
-        <ellipse cx="247" cy="75" rx="16" ry="11" transform="rotate(12 247 75)" />
+  <section class="jumpscare" id="jumpscare" role="dialog" aria-modal="true" aria-label="The cookie has awakened" aria-hidden="true">
+    <p class="scream">RUN</p>
+    <svg class="creature" viewBox="0 0 800 800" aria-hidden="true">
+      <defs><filter id="rough"><feTurbulence baseFrequency=".018" numOctaves="3" seed="8" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="12"/></filter></defs>
+      <g filter="url(#rough)">
+        <path class="skin" d="M400 38 C610 42 734 181 757 382 C778 590 640 744 450 770 C257 796 98 701 55 519 C10 323 122 111 314 53Z"/>
+        <path class="skin-light" d="M400 103 C559 108 670 205 684 372 C701 544 606 653 464 681 C314 711 187 638 145 499 C99 348 177 175 400 103Z" opacity=".72"/>
+        <path class="crack" d="M400 112L380 180 410 221 376 271"/><path class="crack" d="M190 238l70 48-24 53 54 46"/><path class="crack" d="M637 229l-63 54 27 62-55 43"/><path class="crack" d="M262 607l70-44 35 73"/><path class="crack" d="M569 623l-53-51-35 78"/>
+        <ellipse class="eye" cx="285" cy="330" rx="123" ry="146" transform="rotate(-8 285 330)"/><ellipse class="eye" cx="532" cy="326" rx="123" ry="146" transform="rotate(8 532 326)"/>
+        <ellipse class="pupil" cx="302" cy="353" rx="35" ry="62"/><ellipse class="pupil" cx="514" cy="349" rx="35" ry="62"/>
+        <ellipse cx="315" cy="334" rx="9" ry="12" fill="#fff"/><ellipse cx="527" cy="330" rx="9" ry="12" fill="#fff"/>
+        <path class="mouth" d="M155 520 C181 420 310 424 402 497 C494 424 619 421 648 522 C675 619 596 714 404 732 C211 714 130 620 155 520Z"/>
+        <path class="tongue" d="M283 668 C323 616 490 616 535 672 C496 716 329 724 283 668Z"/>
+        <g class="tooth">
+          <path d="M177 545l74-31-8 93-62-12z"/><path d="M256 500l81-25-18 97-75-2z"/><path d="M338 478l66 18-25 87-69-12z"/><path d="M410 499l66-23 20 100-68 15z"/><path d="M476 479l75 26-16 74-72 3z"/><path d="M552 503l75 37-18 54-61-13z"/>
+          <path d="M210 659l72-25 15 74-66-5z"/><path d="M300 646l72-17 17 91-82-17z"/><path d="M405 628l72 15-6 84-68 12z"/><path d="M493 633l76 20-22 51-70 7z"/>
+        </g>
+        <circle cx="159" cy="248" r="33" fill="#160204"/><circle cx="650" cy="280" r="42" fill="#160204"/><circle cx="620" cy="695" r="28" fill="#160204"/><circle cx="190" cy="705" r="36" fill="#160204"/><circle cx="710" cy="449" r="24" fill="#160204"/><circle cx="114" cy="425" r="27" fill="#160204"/>
       </g>
-      <ellipse class="eye" cx="177" cy="194" rx="55" ry="68" />
-      <ellipse class="eye" cx="319" cy="194" rx="55" ry="68" />
-      <circle class="pupil" cx="191" cy="211" r="20" />
-      <circle class="pupil" cx="304" cy="211" r="20" />
-      <path class="mouth" d="M112 275 Q250 237 388 275 Q374 385 250 392 Q126 385 112 275Z" />
-      <path class="tooth" d="M143 275 Q166 269 188 269 L183 307 Q163 305 143 300Z" />
-      <path class="tooth" d="M202 267 Q226 264 249 264 L249 300 Q225 300 202 301Z" />
-      <path class="tooth" d="M263 264 Q287 264 310 269 L308 301 Q286 300 263 300Z" />
-      <path class="tooth" d="M324 269 Q347 271 363 278 L357 305 Q338 306 317 307Z" />
-      <path class="tooth" d="M173 365 Q192 369 212 369 L215 395 Q191 392 178 384Z" />
-      <path class="tooth" d="M287 369 Q308 368 328 362 L322 383 Q305 392 284 395Z" />
     </svg>
-    <p class="hint" id="hint">🎵 Surprise! Enjoy the spooky tune.</p>
     <div class="controls">
-      <button class="small-button" id="again" type="button">Play again</button>
-      <button class="small-button" id="sound" type="button" aria-pressed="true">Turn music off</button>
-      <button class="small-button" id="close" type="button">Close surprise</button>
+      <button class="control" id="again">AGAIN</button>
+      <button class="control" id="mute" aria-pressed="true">MUTE</button>
+      <button class="control" id="close">ESCAPE</button>
     </div>
   </section>
 
   <script>
-    (() => {
-      const stage = document.getElementById('stage');
-      const accept = document.getElementById('accept');
-      const audioButton = document.getElementById('sound');
-      let audioContext;
-      let master;
-      let musicTimer;
-      let musicOn = true;
-      let noteIndex = 0;
-      const melody = [196, 233.08, 261.63, 174.61, 207.65, 155.56, 196, 130.81];
+    (()=>{
+      const stage=document.getElementById('jumpscare'), accept=document.getElementById('accept'), mute=document.getElementById('mute');
+      let ctx, master, noiseGain, noiseTimer, drone, muted=false;
 
-      function playNote() {
-        if (!audioContext || !master || !musicOn) return;
-        const now = audioContext.currentTime;
-        const osc = audioContext.createOscillator();
-        const gain = audioContext.createGain();
-        osc.type = noteIndex % 4 === 3 ? 'triangle' : 'sine';
-        osc.frequency.value = melody[noteIndex % melody.length];
-        gain.gain.setValueAtTime(0.0001, now);
-        gain.gain.exponentialRampToValueAtTime(0.075, now + 0.035);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.52);
-        osc.connect(gain).connect(master);
-        osc.start(now);
-        osc.stop(now + 0.54);
-        if (noteIndex % 2 === 0) {
-          const low = audioContext.createOscillator();
-          const lowGain = audioContext.createGain();
-          low.type = 'triangle';
-          low.frequency.value = melody[noteIndex % melody.length] / 2;
-          lowGain.gain.setValueAtTime(0.0001, now);
-          lowGain.gain.exponentialRampToValueAtTime(0.035, now + 0.04);
-          lowGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.7);
-          low.connect(lowGain).connect(master);
-          low.start(now);
-          low.stop(now + 0.72);
-        }
-        noteIndex++;
+      async function initAudio(){
+        const AC=window.AudioContext||window.webkitAudioContext;
+        if(!AC)return;
+        if(!ctx){ctx=new AC();master=ctx.createGain();master.gain.value=.7;master.connect(ctx.destination)}
+        if(ctx.state==='suspended')await ctx.resume();
       }
-
-      async function startMusic() {
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        if (!AudioContext) {
-          document.getElementById('hint').textContent = 'Surprise! (This browser does not support the spooky tune.)';
-          return;
-        }
-        if (!audioContext) {
-          audioContext = new AudioContext();
-          master = audioContext.createGain();
-          master.gain.value = 0.45;
-          master.connect(audioContext.destination);
-        }
-        if (audioContext.state === 'suspended') await audioContext.resume();
-        if (musicTimer) clearInterval(musicTimer);
-        noteIndex = 0;
-        playNote();
-        musicTimer = setInterval(playNote, 390);
+      function screamSound(){
+        if(!ctx||muted)return;
+        const now=ctx.currentTime;
+        const buffer=ctx.createBuffer(1,ctx.sampleRate*1.25,ctx.sampleRate), data=buffer.getChannelData(0);
+        for(let i=0;i<data.length;i++){const t=i/data.length;data[i]=(Math.random()*2-1)*Math.pow(1-t,.35)}
+        const source=ctx.createBufferSource();source.buffer=buffer;
+        const filter=ctx.createBiquadFilter();filter.type='bandpass';filter.frequency.setValueAtTime(700,now);filter.frequency.exponentialRampToValueAtTime(4200,now+.12);filter.frequency.exponentialRampToValueAtTime(600,now+1.2);filter.Q.value=1.2;
+        noiseGain=ctx.createGain();noiseGain.gain.setValueAtTime(.001,now);noiseGain.gain.exponentialRampToValueAtTime(.9,now+.025);noiseGain.gain.exponentialRampToValueAtTime(.001,now+1.22);
+        source.connect(filter).connect(noiseGain).connect(master);source.start(now);
+        drone=ctx.createOscillator();const dg=ctx.createGain();drone.type='sawtooth';drone.frequency.setValueAtTime(72,now);drone.frequency.exponentialRampToValueAtTime(38,now+1.4);dg.gain.setValueAtTime(.0001,now);dg.gain.exponentialRampToValueAtTime(.32,now+.03);dg.gain.exponentialRampToValueAtTime(.0001,now+1.5);drone.connect(dg).connect(master);drone.start(now);drone.stop(now+1.5);
       }
-
-      function showSurprise() {
-        stage.classList.remove('show');
-        void stage.offsetWidth;
-        stage.classList.add('show');
-        stage.setAttribute('aria-hidden', 'false');
-        startMusic();
-        document.getElementById('again').focus();
-      }
-
-      function closeSurprise() {
-        stage.classList.remove('show');
-        stage.setAttribute('aria-hidden', 'true');
-        if (musicTimer) clearInterval(musicTimer);
-        if (audioContext && audioContext.state !== 'closed') audioContext.suspend();
-        accept.focus();
-      }
-
-      accept.addEventListener('click', showSurprise);
-      document.getElementById('again').addEventListener('click', showSurprise);
-      document.getElementById('close').addEventListener('click', closeSurprise);
-      audioButton.addEventListener('click', async () => {
-        musicOn = !musicOn;
-        audioButton.textContent = musicOn ? 'Turn music off' : 'Turn music on';
-        audioButton.setAttribute('aria-pressed', String(musicOn));
-        if (musicOn) await startMusic();
-        else if (musicTimer) { clearInterval(musicTimer); musicTimer = null; }
-      });
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && stage.classList.contains('show')) closeSurprise();
-      });
+      async function show(){await initAudio();stage.classList.remove('active');void stage.offsetWidth;stage.classList.add('active');stage.setAttribute('aria-hidden','false');document.body.style.animation='none';screamSound();document.getElementById('again').focus()}
+      function close(){stage.classList.remove('active');stage.setAttribute('aria-hidden','true');accept.focus()}
+      accept.addEventListener('click',show);document.getElementById('again').addEventListener('click',show);document.getElementById('close').addEventListener('click',close);
+      mute.addEventListener('click',()=>{muted=!muted;mute.textContent=muted?'UNMUTE':'MUTE';mute.setAttribute('aria-pressed',String(!muted);if(master&&!muted)master.gain.setTargetAtTime(.7,ctx.currentTime,.03);if(master&&muted)master.gain.setTargetAtTime(.0001,ctx.currentTime,.03)});
+      document.addEventListener('keydown',e=>{if(e.key==='Escape'&&stage.classList.contains('active'))close()});
     })();
   </script>
 </body>
